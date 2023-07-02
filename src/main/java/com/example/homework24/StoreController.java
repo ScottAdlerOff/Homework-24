@@ -1,28 +1,27 @@
 package com.example.homework24;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.annotation.SessionScope;
 
 @RestController
 @RequestMapping("/order")
+@SessionScope
 public class StoreController {
-    private final StoreService storeService;
-    public StoreController(StoreService storeService){
-        this.storeService = storeService;
+    private Basket basket;
+
+    @Autowired
+    public StoreController(Basket basket) {
+        this.basket = basket;
     }
-    @GetMapping("/add")
-    public String addProduct(@RequestParam int id){
-        storeService.addArticle(id);
-        return "Товар добавлен в корзину";
+
+    @PostMapping("/add")
+    public void addItem(@RequestParam("id") int itemId) {
+        basket.addItem(itemId);
     }
+
     @GetMapping("/get")
-    public void print() {
-        storeService.showBasket();
-    }
-    @GetMapping("/test")
-    public void doSmth(){
-        storeService.doSmth();
+    public Basket getItems() {
+        return basket;
     }
 }

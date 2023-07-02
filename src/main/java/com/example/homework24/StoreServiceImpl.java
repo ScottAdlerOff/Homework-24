@@ -1,11 +1,13 @@
 package com.example.homework24;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Scope(scopeName = "request")
 public class StoreServiceImpl implements StoreService{
     List<Product> basket = new ArrayList<>();
 
@@ -20,10 +22,6 @@ public class StoreServiceImpl implements StoreService{
         for (Product product : basket){
             System.out.println(product);
         }
-    }
-    @Override
-    public void doSmth(){
-        System.out.println("---");
     }
 
 }
