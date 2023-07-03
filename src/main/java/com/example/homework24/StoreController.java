@@ -6,22 +6,21 @@ import org.springframework.web.context.annotation.SessionScope;
 
 @RestController
 @RequestMapping("/order")
-@SessionScope
 public class StoreController {
-    private Basket basket;
+    private CartService cartService;
 
     @Autowired
-    public StoreController(Basket basket) {
-        this.basket = basket;
+    public StoreController(CartService cartService) {
+        this.cartService = cartService;
     }
 
     @PostMapping("/add")
     public void addItem(@RequestParam("id") int itemId) {
-        basket.addItem(itemId);
+        cartService.addItem(itemId);
     }
 
     @GetMapping("/get")
     public Basket getItems() {
-        return basket;
+        return cartService.getBasket();
     }
 }

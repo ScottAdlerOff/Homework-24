@@ -1,14 +1,12 @@
 package com.example.homework24;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.annotation.SessionScope;
 
 @Service
-@SessionScope
 public class CartService {
     private Basket basket;
 
-    public CartService() {
+    public CartService(Basket basket) {
         this.basket = new Basket();
     }
 

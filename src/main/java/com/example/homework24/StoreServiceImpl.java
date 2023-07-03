@@ -9,19 +9,19 @@ import java.util.List;
 @Service
 @Scope(scopeName = "request")
 public class StoreServiceImpl implements StoreService{
-    List<Product> basket = new ArrayList<>();
+    private final Basket basket;
 
-    @Override
-    public void addArticle(int id){
-        Product product = new Product(id);
-        basket.add(product);
+    public StoreServiceImpl(Basket basket) {
+        this.basket = basket;
     }
 
     @Override
-    public void showBasket(){
-        for (Product product : basket){
-            System.out.println(product);
-        }
+    public void addArticle(int id) {
+
     }
 
+    @Override
+    public void showBasket() {
+
+    }
 }

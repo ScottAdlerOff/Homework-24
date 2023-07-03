@@ -1,8 +1,11 @@
 package com.example.homework24;
 
+import org.springframework.web.context.annotation.SessionScope;
+
 import java.awt.*;
 import java.util.ArrayList;
-
+@Component
+@SessionScope
 public class Basket {
     private List<Product> items;
 
