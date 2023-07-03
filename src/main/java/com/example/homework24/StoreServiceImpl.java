@@ -1,0 +1,27 @@
+package com.example.homework24;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+@Scope(scopeName = "request")
+public class StoreServiceImpl implements StoreService{
+    private final Basket basket;
+
+    public StoreServiceImpl(Basket basket) {
+        this.basket = basket;
+    }
+
+    @Override
+    public void addArticle(int id) {
+
+    }
+
+    @Override
+    public void showBasket() {
+
+    }
+}
