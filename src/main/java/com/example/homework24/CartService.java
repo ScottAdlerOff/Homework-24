@@ -3,7 +3,7 @@ package com.example.homework24;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CartService {
+public class CartService  implements StoreService{
     private Basket basket;
 
     public CartService(Basket basket) {
@@ -16,5 +16,15 @@ public class CartService {
 
     public Basket getBasket() {
         return basket;
+    }
+
+    @Override
+    public void addArticle(int id) {
+
+    }
+
+    @Override
+    public void showBasket() {
+
     }
 }
