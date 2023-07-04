@@ -2,25 +2,27 @@ package com.example.homework24;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.annotation.SessionScope;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/order")
 public class StoreController {
-    private CartService cartService;
+    private final CartService cartService;
 
     @Autowired
     public StoreController(CartService cartService) {
+
         this.cartService = cartService;
     }
 
-    @PostMapping("/add")
-    public void addItem(@RequestParam("id") int itemId) {
-        cartService.addItem(itemId);
+    @GetMapping("/add")
+    public List<Integer> addItems(@RequestParam List<Integer> items){
+        return cartService.addItems(items);
     }
 
     @GetMapping("/get")
-    public Basket getItems() {
-        return cartService.getBasket();
+    public List<Integer> getItems() {
+        return cartService.getItems();
     }
 }

@@ -1,6 +1,8 @@
 package com.example.homework24;
 
+import java.util.List;
+
 public interface StoreService {
-    void addArticle(int id);
-    void showBasket();
+    List<Integer> addItems(List<Integer> items);
+    List<Integer> getItems();
 }

@@ -2,29 +2,24 @@ package com.example.homework24;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class CartService  implements StoreService{
-    private Basket basket;
+public class CartService implements StoreService{
+
+    private final Basket basket;
 
     public CartService(Basket basket) {
-        this.basket = new Basket();
-    }
-
-    public void addItem(int itemId) {
-        basket.addItem(itemId);
-    }
-
-    public Basket getBasket() {
-        return basket;
+        this.basket = basket;
     }
 
     @Override
-    public void addArticle(int id) {
-
+    public List<Integer> addItems(List<Integer> items){
+        return basket.add(items);
     }
 
     @Override
-    public void showBasket() {
-
+    public List<Integer> getItems() {
+        return basket.get();
     }
 }
